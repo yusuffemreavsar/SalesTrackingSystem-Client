@@ -30,7 +30,8 @@ onSubmit() {
  this.httpService.loginUser(user).subscribe((response)=>{
   try {
     this.tokenService.setToken(response.accessToken.token)
-    console.log("Success...") 
+    console.log("Success...")
+ this.router.navigate(['/main']);  
   } catch (error) {
     console.log(error)
   }
