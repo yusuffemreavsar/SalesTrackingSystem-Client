@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { IUserLogin } from '../../../models/userlogin';
 import { LoginService } from '../../../services/login/login.service';
 import { TokenService } from '../../../core/token.service';
+import { NavbarService } from '../../../services/navbar/navbar.service';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,7 @@ import { TokenService } from '../../../core/token.service';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  navbarService=inject(NavbarService)
   formBuilder=inject(FormBuilder);
   httpService=inject(LoginService)
   tokenService=inject(TokenService)
@@ -30,8 +32,9 @@ onSubmit() {
  this.httpService.loginUser(user).subscribe((response)=>{
   try {
     this.tokenService.setToken(response.accessToken.token)
+    this.navbarService.setLoggedIn(true);
     console.log("Success...")
- this.router.navigate(['/main']);  
+    this.router.navigate(['/main']);  
   } catch (error) {
     console.log(error)
   }

@@ -1,14 +1,22 @@
-<div class="container">
-    <div class="row">
-      <div *ngFor="let product of products" class="col-md-2">
-        <div class="card" style="width: 100%;">
-          <img class="card-img-top" [src]="product.imageUrl" alt="Card image cap">
-          <div class="card-body">
-            <h3>{{ product.name }}</h3>
-            <h5 class="card-text">Price: {{ product.price }}$</h5>
-          </div>
+<div class="container mt-2">
+  <div class="row">
+    <div *ngFor="let product of products" class="col-md-2 mt-5">
+      <div class="card" style="width: 100%;">
+        <div class="card-body">
+          <h3>{{ product.name }}</h3>
+          <p>{{ product.description }}</p>
+          <p>Stock Quantity: {{ product.stockQuantity }}</p>
+          <p>Price: {{ product.price }} $</p>
+          <p>Prduct ID:{{ product.id }}</p>
+         
+          <button class="btn btn-primary mt-2" (click)="buyProduct(product.id,10,product.price)">Add Card</button>
         </div>
       </div>
     </div>
   </div>
-  
+</div>
+
+  <app-basket></app-basket>
+
+
+

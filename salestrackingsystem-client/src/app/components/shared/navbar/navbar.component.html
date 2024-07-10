@@ -20,10 +20,22 @@
     </div>
     
     <!-- Ek linkler (Login ve Register) -->
-    <div>
-      <a class="navbar-brand fs-5" [routerLink]="['/login']">Login</a>
-      <a class="navbar-brand fs-5" [routerLink]="['/register']">Register</a>
+    <div *ngIf="!isLoggedIn" class="md:flex hidden lg:gap-4">
+      <div>
+        <a class="navbar-brand fs-5" [routerLink]="['/login']">Login</a>
+        <a class="navbar-brand fs-5" [routerLink]="['/register']">Register</a>
+      </div>      
     </div>
+    <div *ngIf="isLoggedIn" class="md:flex hidden lg:gap-4">
+      <div>
+        <i class="bi bi-cart-fill me-2" (click)="openBasket()"></i>
+        <a class="navbar-brand fs-5" [routerLink]="['/']">Yusuf Emre Avsar</a>
+        <button class="btn btn-danger" [routerLink]="['/']" (click)="logout()">Exit</button>
+      </div>
+       
+    </div>
+    
   </div>
 </nav>
+
 

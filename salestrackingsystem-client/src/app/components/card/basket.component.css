@@ -1,0 +1,13 @@
+.modal {
+    display: block; /* Ensures the modal is displayed */
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  }
+  
+  .modal-dialog {
+    max-width: 500px;
+    margin: 1.75rem auto;
+  }
+  
+  .modal-content {
+    padding: 1rem;
+  }
