@@ -3,11 +3,13 @@ import { Component, inject } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { NavbarService } from '../../../services/navbar/navbar.service';
 import { TokenService } from '../../../core/token.service';
+import { BasketComponent } from "../../basket/basket.component";
+import { BasketService } from '../../../services/basket/basket.service';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink,CommonModule],
+  imports: [RouterLink, CommonModule, BasketComponent],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
@@ -15,15 +17,16 @@ import { TokenService } from '../../../core/token.service';
 export class NavbarComponent {
   isOpenBasket:boolean=false;
   navbarService=inject(NavbarService)
+  basketService=inject(BasketService)
   tokenService=inject(TokenService)
-  isLoggedIn: boolean = false;
+  isLoggedIn: boolean = true;
   checkToken() {
     const token = this.tokenService.getToken();
     if (token) {
       this.isLoggedIn = true;
     }
   }
-  async ngOnInit() {
+  ngOnInit() {
     this.navbarService.isLoggedIn.subscribe(isLoggedIn => {
       this.isLoggedIn = isLoggedIn;
     });
@@ -35,6 +38,6 @@ export class NavbarComponent {
     this.tokenService.setToken("");
   }
   openBasket() {
-    this.isOpenBasket=true;
+    this.basketService.toggleBasket(true)
   }
 }

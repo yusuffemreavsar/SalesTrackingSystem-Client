@@ -7,16 +7,21 @@
           <p>{{ product.description }}</p>
           <p>Stock Quantity: {{ product.stockQuantity }}</p>
           <p>Price: {{ product.price }} $</p>
-          <p>Prduct ID:{{ product.id }}</p>
+          <p>Product ID: {{ product.id }}</p>
+          
+          
+            <input type="number" class="form-control" placeholder="Quantity" min="1" max="{{ product.stockQuantity }}"
+                   [(ngModel)]="selectedQuantities[product.id]" (input)="checkQuantityValidity(product)"
+                   [ngModelOptions]="{standalone: true}">
+            <button class="btn btn-primary mt-2" 
+                    [disabled]="!isQuantityValid(selectedQuantities[product.id])"
+                    (click)="addBasket(product.id, selectedQuantities[product.id], product.price)">
+              Add to Cart
+            </button>
          
-          <button class="btn btn-primary mt-2" (click)="buyProduct(product.id,10,product.price)">Add Card</button>
+          
         </div>
       </div>
     </div>
   </div>
 </div>
-
-  <app-basket></app-basket>
-
-
-
