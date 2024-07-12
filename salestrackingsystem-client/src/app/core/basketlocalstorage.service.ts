@@ -50,5 +50,8 @@ export class BasketLocalStorageService {
   }
   return null;
 }
+  setBasket(setItem:string){
+    localStorage.setItem('basketItems',setItem);
+  }
 
 }

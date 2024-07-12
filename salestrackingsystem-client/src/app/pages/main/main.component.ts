@@ -8,6 +8,7 @@ import { EventEmitter } from 'stream';
 import { BasketService } from '../../services/basket/basket.service';
 import { BasketLocalStorageService } from '../../core/basketlocalstorage.service';
 import { FormsModule } from '@angular/forms';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-main',
@@ -28,12 +29,12 @@ export class MainComponent {
   constructor(private cdRef: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    this.httpService.getProducts().subscribe((data:IProduct[])=>
-      {
-        this.products=data
-      }
-      
-    )
+    this.loadProducts();
+  }
+  loadProducts(): void {
+    this.httpService.getProducts().subscribe((data: IProduct[]) => {
+      this.products = data;
+    });
   }
   addBasket(productId:string,quantity:number,productPrice:number) {
     const totalPrice=quantity*productPrice
@@ -47,7 +48,7 @@ export class MainComponent {
    this.basketLocalStorageService.saveBasketToLocalStorage(product);
    this.basketLocalStorageService.loadBasketFromLocalStorage();
      console.log(localStorage.getItem("basketItems"))
-    
+    this.ngOnInit()
    
   }
   openPopUp(){

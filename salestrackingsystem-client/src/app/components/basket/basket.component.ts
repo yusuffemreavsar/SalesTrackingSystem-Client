@@ -34,23 +34,19 @@ export class BasketComponent {
 
 
   async ngOnInit(): Promise<void> {
-    // Asenkron olarak localStorage'dan verileri çek
     this.items = await this.basketLocalStorageService.loadBasketFromLocalStorage();
     
-    // isOpenBasket durumunu dinle
+
     this.basketService.isOpenBasket.subscribe(status => {
       
       this.isOpenBasket = status;
     });
     
-    // basketItems$ Observable'ını dinleyerek verileri güncelle
+ 
     this.basketLocalStorageService.basketItems$.subscribe(items => {
 
-      this.items = items; // LocalStorage'dan gelen verileri güncelle
-      console.log("burdayim")
-      console.log("Items",items)
-      
-    
+      this.items = items; 
+
     });
   }
   closeBasket() {
@@ -74,8 +70,6 @@ export class BasketComponent {
         
         if (customer) {
           sale.customerId = customer.id;
-          console.log("ok");
-          // Diğer işlemleri burada yapabilirsiniz
         } else {
           console.error('Customer not found for user:', user.id);
         }
@@ -84,7 +78,10 @@ export class BasketComponent {
       }
       if(sale){
         this.saleService.setSale(sale).subscribe(result=>console.log("Process done..."));
+        this.items=[];
+        this.basketLocalStorageService.setBasket("")
       }
+
      
     }
     

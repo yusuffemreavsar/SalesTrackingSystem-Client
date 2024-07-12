@@ -1,3 +1,4 @@
+import { BasketLocalStorageService } from './../../../core/basketlocalstorage.service';
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
@@ -19,6 +20,7 @@ export class NavbarComponent {
   navbarService=inject(NavbarService)
   basketService=inject(BasketService)
   tokenService=inject(TokenService)
+  basketLocalStorageService=inject(BasketLocalStorageService)
   isLoggedIn: boolean = true;
   checkToken() {
     const token = this.tokenService.getToken();
@@ -36,6 +38,7 @@ export class NavbarComponent {
   logout() {
     this.isLoggedIn=false;
     this.tokenService.setToken("");
+    this.basketLocalStorageService.setBasket("");
   }
   openBasket() {
     this.basketService.toggleBasket(true)

@@ -1,0 +1,18 @@
+.flex-container {
+    display: flex;
+  }
+  .sidebar{
+    width: 300px;
+  }
+  .content {
+    flex-grow: 1; /* İçerik alanının genişlemesi için */
+    padding: 20px;
+    background-color: rgb(228, 228, 228);
+  }
+  
+  .content h1 {
+    font-size: 24px;
+    color: #000000;
+    text-align: center;
+  }
+  
