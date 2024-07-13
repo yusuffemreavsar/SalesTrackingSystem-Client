@@ -10,13 +10,13 @@ export class ProductService {
 
   constructor() { }
   apiUrl="http://localhost:60805/api"
-  http=inject(HttpClient)
+  httpService=inject(HttpClient)
 
   
   getProducts(): Observable<IProduct[]> {
-    return this.http.get<any>(`${this.apiUrl}/Products?PageIndex=0&PageSize=10`).pipe(
+    return this.httpService.get<any>(`${this.apiUrl}/Products?PageIndex=0&PageSize=10`).pipe(
       map(response => {
-        const products: IProduct[] = response.items.map((item: any) => ({
+        const products: IProduct[] = response.items.map((item:IProduct) => ({
           id: item.id,
           name: item.name,
           description:item.description,

@@ -11,6 +11,7 @@ import { JwtService } from '../../services/jwt/jwt.service';
 import { UserService } from '../../services/user/user.service';
 import { CustomerService } from '../../services/customer/customer.service';
 import { firstValueFrom } from 'rxjs';
+import { ISaleAdd } from '../../models/saleAdd';
 
 @Component({
   selector: 'app-basket',
@@ -56,11 +57,11 @@ export class BasketComponent {
     const items = this.items || [];
   
     for (const item of items) {
-      const sale: ISale = {
+      const sale: ISaleAdd = {
         productId: item.productId!,
         customerId: "",
         quantity: item.quantity!,
-        totalPrice: item.totalPrice!
+        totalPrice: item.totalPrice!,
       };
   
       try {

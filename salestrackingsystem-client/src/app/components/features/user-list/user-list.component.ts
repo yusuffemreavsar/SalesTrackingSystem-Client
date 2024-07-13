@@ -15,6 +15,7 @@ export class UserListComponent {
   users: ICustomer[] = []; 
   ngOnInit(){
     this.customerService.getCustomers().subscribe(data=>{
+      
       this.users=data
     })
   }
