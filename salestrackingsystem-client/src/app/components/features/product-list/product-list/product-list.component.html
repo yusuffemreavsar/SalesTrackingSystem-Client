@@ -1,0 +1,50 @@
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title text-uppercase mb-0">Products</h5>
+            </div>
+            <div class="table-responsive">
+                <table class="table no-wrap user-table mb-0">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="border-0 text-uppercase font-medium">Product Id</th>
+                      <th scope="col" class="border-0 text-uppercase font-medium">Name</th>
+                      <th scope="col" class="border-0 text-uppercase font-medium">Description</th>
+                      <th scope="col" class="border-0 text-uppercase font-medium">Stock Quantity</th>
+                      <th scope="col" class="border-0 text-uppercase font-medium">Price</th>
+                      <th scope="col" class="border-0 text-uppercase font-medium"></th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let product of products">
+                      <td>
+                        <h5 class="font-medium">{{product.id  }}</h5>
+                      </td>
+                      <td>
+                        <h5 class="font-medium">{{ product.name}}</h5>
+                      </td>
+                      <td>
+                        <h5 class="font-medium">{{product.description }}</h5>
+                      </td>
+                      <td>
+                        <h5 class="font-medium">{{product.stockQuantity}}</h5>
+                      </td>
+                      <td>
+                        <h5 class="font-medium">{{product.price}}$</h5>
+                      </td>
+                      <td>
+                        <button type="button" class="btn btn-primary">Update</button>
+                      </td>
+                            
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

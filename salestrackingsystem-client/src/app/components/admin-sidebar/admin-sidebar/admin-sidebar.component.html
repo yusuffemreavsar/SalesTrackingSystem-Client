@@ -2,12 +2,12 @@
       <div class="position-sticky">
         <div class="list-group list-group-flush mx-3 mt-4">
           <a [routerLink]="['/admin-panel/user-list']" class="list-group-item list-group-item-action py-2 ripple">
-                <i class="fas fa-chart-area fa-fw me-3"></i><span>Users</span>
+                <i class="fas fa-chart-area fa-fw me-3"></i><span>Customers</span>
           </a>
           <a [routerLink]="['/admin-panel/sales-list']" class="list-group-item list-group-item-action py-2 ripple">
             <i class="fas fa-chart-area fa-fw me-3"></i><span>Sales</span>
           </a>
-          <a href="#" class="list-group-item list-group-item-action py-2 ripple"
+          <a [routerLink]="['/admin-panel/product-list']" class="list-group-item list-group-item-action py-2 ripple"
             ><i class="fas fa-lock fa-fw me-3"></i><span>Products</span></a
           >
         </div>

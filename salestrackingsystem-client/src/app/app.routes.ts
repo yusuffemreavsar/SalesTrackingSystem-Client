@@ -5,6 +5,7 @@ import { MainComponent } from './pages/main/main.component';
 import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 import { UserListComponent } from './components/features/user-list/user-list.component';
 import { SalesListComponent } from './components/features/sales-list/sales-list/sales-list.component';
+import { ProductListComponent } from './components/features/product-list/product-list/product-list.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent},
@@ -12,7 +13,8 @@ export const routes: Routes = [
     { path: 'main', component: MainComponent},
     { path: 'admin-panel', component: AdminPanelComponent,children:[
         { path: 'user-list', component: UserListComponent},
-        { path: 'sales-list', component: SalesListComponent}
+        { path: 'sales-list', component: SalesListComponent},
+        { path: 'product-list', component: ProductListComponent}
     ]}
   
 
