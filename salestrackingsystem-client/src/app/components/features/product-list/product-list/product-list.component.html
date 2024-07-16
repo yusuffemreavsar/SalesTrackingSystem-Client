@@ -19,7 +19,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let product of products">
+                    <tr *ngFor="let product of products" (click)="loadCustomerDetails(product)">
                       <td>
                         <h5 class="font-medium">{{product.id  }}</h5>
                       </td>
@@ -36,7 +36,7 @@
                         <h5 class="font-medium">{{product.price}}$</h5>
                       </td>
                       <td>
-                        <button type="button" class="btn btn-primary">Update</button>
+                        <button type="button" class="btn btn-primary" (click)="openPopUp()">Update</button>
                       </td>
                             
                     </tr>
@@ -45,6 +45,52 @@
             </div>
         </div>
     </div>
+</div>
+<div  *ngIf="isStatusPopUp">
+  <div class="modal fade show d-block" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Product Update</h5>
+          <button type="button" class="btn-close" aria-label="Close" (click)="closePopUp()"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="productUpdateForm" (ngSubmit)="onSubmit()">
+            <div class="form-outline mb-4">
+              <label class="form-label" for="idX-2">Id</label>
+              <input type="text" id="idX-2" class="form-control form-control-lg" formControlName="id" />
+     
+            </div>
+            <div class="form-outline mb-4">
+              <label class="form-label" for="nameX-2">Name</label>
+              <input type="text" id="nameX-2" class="form-control form-control-lg" formControlName="name" />
+     
+            </div>
+            <div class="form-outline mb-4">
+              <label class="form-label" for="DescriptionX-2">Description</label>
+              <input type="text" id="DescriptionX-2" class="form-control form-control-lg" formControlName="description" />
+     
+            </div>
+            <div class="form-outline mb-4">
+              <label class="form-label" for="stockQuantityX-2">Stock Quantity</label>
+              <input type="number" id="stockQuantityX-2" class="form-control form-control-lg" formControlName="stockQuantity" />
+     
+            </div>
+
+            <div class="form-outline mb-4">
+              <label class="form-label" for="priceX-2">Price</label>
+              <input type="number" id="priceX-2" class="form-control form-control-lg" formControlName="price" />
+      
+            </div>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" (click)="onSubmit()" >Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 

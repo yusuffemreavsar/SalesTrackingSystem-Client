@@ -27,4 +27,7 @@ export class ProductService {
       })
     );
   }
+  updateProduct(product: IProduct) {
+    return this.httpService.put(`${this.apiUrl}/Products`, product);
+  }
 }
