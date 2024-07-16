@@ -26,7 +26,7 @@
     <div *ngIf="isLoggedIn" class="md:flex hidden lg:gap-4">
       <div>
         <i class="bi bi-cart-fill me-2" (click)="openBasket()"></i>
-        <a class="navbar-brand fs-5" [routerLink]="['/admin-panel']">Yusuf Emre Avsar</a>
+        <a class="navbar-brand navbar-username fs-5" [routerLink]="['/admin-panel']">{{userName}}</a>
         <button class="btn btn-danger" [routerLink]="['/']" (click)="logout()">Exit</button>
       </div>
        

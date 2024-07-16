@@ -6,7 +6,7 @@
                     <h5 class="card-title text-uppercase mb-0">Customers</h5>
                 </div>
                 <div class="card-body">
-                  <button type="button" class="btn btn-primary" (click)="addButton()">Add Customer</button>
+                  <button type="button" class="btn btn-primary" (click)="openPopUpAdd()">Add Customer</button>
                 </div>
                 <div class="table-responsive">
                     <table class="table no-wrap  mb-0">
@@ -39,7 +39,7 @@
                             <button type="button" class="btn btn-primary" (click)="updateButton()">Update</button>
                           </td>
                           <td>
-                            <button type="button" class="btn btn-danger" (click)="deleteButton()">Delete</button>
+                            <button type="button" class="btn btn-danger" (click)="deleteUser(user.id)">Delete</button>
                           </td>
                         </tr>
                       </tbody>
@@ -87,6 +87,52 @@
             </div>
             <div class="modal-footer">
               <button type="submit" class="btn btn-primary" (click)="onSubmit()" >Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div  *ngIf="isStatusPopUpAdd">
+      <div class="modal fade show d-block" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Add Customer</h5>
+              <button type="button" class="btn-close" aria-label="Close" (click)="closePopUpAdd()"></button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="customerAddForm" (ngSubmit)="addButton()">
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="typeFirstNameX-2">First Name</label>
+                  <input type="text" id="typeFirstNameX-2" class="form-control form-control-lg" formControlName="firstName" />
+         
+                </div>
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="typelastNameX-2">Last Name</label>
+                  <input type="text" id="typeLastNameX-2" class="form-control form-control-lg" formControlName="lastName" />
+         
+                </div>
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="typeEmailX-2">Email</label>
+                  <input type="text" id="typeEmailX-2" class="form-control form-control-lg" formControlName="email" />
+         
+                </div>
+  
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="phoneNumberX-2">Phone Number</label>
+                  <input type="text" id="typePhoneNumberX-2" class="form-control form-control-lg" formControlName="phoneNumber" />
+          
+                </div>
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="passwordX-2">Password</label>
+                  <input type="text" id="passwordX-2" class="form-control form-control-lg" formControlName="password" />
+          
+                </div>
+
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary" (click)="addButton()" >Submit</button>
             </div>
           </div>
         </div>

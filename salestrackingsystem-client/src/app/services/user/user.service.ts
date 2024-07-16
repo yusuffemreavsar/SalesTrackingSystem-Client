@@ -42,6 +42,9 @@ export class UserService {
   updateUser(user: IUserUpdate) {
     return this.http.put("http://localhost:60805/api/Users", user);
   }
+  deleteUser(user:{id:string}){
+    return this.http.delete<any>(this.apiUrl+"/Users",{body:user})
+  }
   
 
 }

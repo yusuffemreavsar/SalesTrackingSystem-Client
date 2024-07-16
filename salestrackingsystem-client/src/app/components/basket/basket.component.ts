@@ -24,15 +24,10 @@ export class BasketComponent {
   basketLocalStorageService=inject(BasketLocalStorageService)
   saleService=inject(SaleService)
   userService=inject(UserService)
-  
   isOpenBasket:boolean=false;
   basketService=inject(BasketService)
   customerService=inject(CustomerService)
   items: IBasketProduct[] | null = [];
-
-
-  
-
 
   async ngOnInit(): Promise<void> {
     this.items = await this.basketLocalStorageService.loadBasketFromLocalStorage();
